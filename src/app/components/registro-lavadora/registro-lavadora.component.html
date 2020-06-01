@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="card col-sm-8">
+    <div class="card-header">
+      Registrar lavadora
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="Nombre">Marca de la lavadora</label>
+          <input [formControl]="marca" type="text" class="form-control" id="Nombre"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="Dirección">Capacidad</label>
+          <input [formControl]="capacidad" type="text" class="form-control" id="Dirección"
+                 aria-describedby="emailHelp">
+        </div>
+
+
+        <div class="form-group">
+          <label for="Correo">Color</label>
+          <input [formControl]="color" type="text" class="form-control" id="Correo"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="Celular">Panel de control</label>
+          <input [formControl]="panel" type="text" class="form-control" id="Celular"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Maguera de conexión </label>
+          <input [formControl]="manguera" type="text" class="form-control" id="password"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="repeatPassword">Precio de alquiler por hora</label>
+          <input [formControl]="precio" type="text" class="form-control" id="repeatPassword"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="centered">
+          <button [disabled]="isLoading" type="button" (click)="crearLavadora()" class="btn btn-primary">Registrar</button>
+          <div *ngIf="isLoading" class="spinner-border loading" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+

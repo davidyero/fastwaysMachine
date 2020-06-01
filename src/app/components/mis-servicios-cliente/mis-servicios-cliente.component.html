@@ -1,0 +1,74 @@
+<div *ngIf="showError" class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{messageError}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span (click)="hiddenAlert()">&times;</span>
+  </button>
+</div>
+
+<div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="card col-sm-8">
+      <div class="card-header">
+        Mis Servicios
+      </div>
+      <div class="card-body">
+        <div class="centered">
+          <div *ngIf="isLoading" class="spinner-border loading" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <div class="accordion" id="accordionExample2">
+
+        <div *ngIf="listaDeMeses">
+          <div *ngFor="let servicios of listaDeMeses">
+            <br>
+            <h2>{{servicios[0].mes}}</h2>
+          <div *ngFor="let servicio of servicios; let i = index">
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="mb-0">
+                    <div class="cursor-p" data-toggle="collapse" [attr.data-target]="'#'+servicio.mes+i" [attr.arial-controls]="servicio.mes+i" >
+                      <h6>{{servicio.marca}}</h6>
+                      <h6>{{servicio.tarifa}}</h6>
+                      <h6>{{servicio.fecha}} {{servicio.hora}}</h6>
+                    </div>
+                  </h2>
+                </div>
+
+                <div [attr.id]="servicio.mes+i" class="collapse" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <ul>
+                      <li>
+                        {{servicio.fecha}} {{servicio.hora}}
+                      </li>
+                      <li>
+                        Tarifa: {{servicio.tarifa}}
+                      </li>
+                      <li>
+                        Empresa: {{servicio.empresa}}
+                      </li>
+                      <li>
+                        Marca: {{servicio.marca}}
+                      </li>
+                      <li>
+                        Duracion: {{servicio.duracion}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="centered boton-servicios">
+          <button class="btn btn-primary" (click)="goToPrincipal()">Ir al inicio</button>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

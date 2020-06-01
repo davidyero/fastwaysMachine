@@ -1,0 +1,73 @@
+<div *ngIf="showError" class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{messageError}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span (click)="hiddenAlert()">&times;</span>
+  </button>
+</div>
+
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="card col-sm-8">
+    <div class="card-header">
+      Modificar empresa
+    </div>
+    <div class="card-body">
+      <div class="centered">
+        <div *ngIf="isLoading" class="spinner-border loading" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <form  *ngIf="!isLoading">
+        <div class="form-group">
+          <label for="Nombre">Nombre</label>
+          <input [formControl]="name" type="text" class="form-control" id="Nombre"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="Dirección">Dirección</label>
+          <input [formControl]="address" type="text" class="form-control" id="Dirección"
+                 aria-describedby="emailHelp">
+        </div>
+
+
+        <div class="form-group">
+          <label for="Correo">Correo</label>
+          <input disabled [formControl]="email" type="text" class="form-control" id="Correo"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="Celular">Celular</label>
+          <input [formControl]="cellNumber" type="text" class="form-control" id="Celular"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input [formControl]="password" type="text" class="form-control" id="password"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+          <label for="repeatPassword">Repetir la contraseña</label>
+          <input [formControl]="repeatPassword" type="text" class="form-control" id="repeatPassword"
+                 aria-describedby="emailHelp">
+        </div>
+
+        <div class="centered">
+          <div>
+            <button [disabled]="isLoading" type="button" (click)="actualizar()" class="btn btn-primary">Actualizar</button>
+          </div>
+          <div class="padding-top">
+            <button [disabled]="isLoading" type="button" (click)="borrar()" class="btn btn-danger">Borrar Cuenta</button>
+          </div>
+          <div *ngIf="isLoading" class="spinner-border loading" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
