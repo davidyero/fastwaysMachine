@@ -5,6 +5,7 @@ import {ListWashingMachineModel} from '../../shared/models/list-washing-machine.
 import {finalize} from 'rxjs/operators';
 import {LavadoraModel} from '../../shared/models/lavadora.model';
 import {Constants} from '../../shared/constants/constants';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-listado-lavadoras-cliente',
@@ -19,6 +20,7 @@ export class ListadoLavadorasClienteComponent implements OnInit {
   public messageError = '';
   public lavadora: LavadoraModel;
   public lavadoras: ListWashingMachineModel[] = [];
+  public tiempo = new FormControl('');
 
   // Reemplazar por esta linea
   // constructor(private router: Router, private appService: AppService) {
@@ -68,7 +70,8 @@ export class ListadoLavadorasClienteComponent implements OnInit {
   }
 
   public confirm(id: number): void {
-    this.appService.confimarPedido(id)
+    const horas = this.tiempo.value;
+    this.appService.confimarPedido(id, horas.toString())
       .pipe(finalize(() => this.isLoading = false))
       .subscribe(
         () => {

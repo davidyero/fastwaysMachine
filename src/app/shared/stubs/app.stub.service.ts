@@ -111,7 +111,7 @@ export class AppStubService {
     }).pipe(delay(1000));
   }
 
-  public confimarPedido(id: number): Observable<boolean> {
+  public confimarPedido(id: number, horas: string): Observable<boolean> {
     return of(true);
   }
 

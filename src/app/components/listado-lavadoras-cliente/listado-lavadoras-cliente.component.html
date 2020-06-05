@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<div *ngIf="!showList">
+<div *ngIf="!showList && lavadora">
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="card col-sm-8">
@@ -106,6 +106,13 @@
             <div class="col-sm-10">
               <input type="text" readonly class="form-control-plaintext" value="{{lavadora.precio}}">
             </div>
+
+            <label for="tiempo" class="col-sm-2 col-form-label">Duración (Horas)</label>
+            <div class="col-sm-10">
+              <input [formControl]="tiempo" type="text" class="form-control" id="tiempo"
+                     aria-describedby="emailHelp">
+            </div>
+
           </div>
           <div class="centered">
             <div>
